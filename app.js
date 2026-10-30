@@ -2,7 +2,7 @@
    IMPORTANT: local stats are NOT server-authenticated; no false global leaderboard claims. */
 (()=>{"use strict";
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
-const KEY="riddlova-stats-v1",URL=new URL("./",document.baseURI).href;
+const KEY="riddlova-stats-v1",SITE_URL=new URL("./",document.baseURI).href;
 const langList=Object.keys(window.RIDDLOVA_I18N||{en:1});const dict=window.RIDDLOVA_I18N||{en:{}};
 let lang="en",session=null,timers=[],tick=null,toastTimer=null;
 const today=()=>new Date().toISOString().slice(0,10);
@@ -119,7 +119,7 @@ function showResult(s){clearTimers();$("#game-overlay").hidden=false;document.bo
 }
 function closeGame(){clearTimers();session=null;$("#game-overlay").hidden=true;document.body.style.overflow="";$("#game-actions").replaceChildren();const next=document.createElement("button");next.type="button";next.className="btn btn-primary";next.id="game-next";next.hidden=true;next.textContent=tr("continue")+" →";next.addEventListener("click",nextQuestion);$("#game-actions").append(next)}
 async function shareChallenge(score){const text=tr("shareText")+(Number.isFinite(score)?" "+score+" XP":"");
- const link=URL+"?ref=challenge";const tg=window.Telegram?.WebApp;
+ const link=SITE_URL+"?ref=challenge";const tg=window.Telegram?.WebApp;
  if(tg?.openTelegramLink){tg.openTelegramLink("https://t.me/share/url?url="+encodeURIComponent(link)+"&text="+encodeURIComponent(text));return}
  if(navigator.share){try{await navigator.share({title:"RIDDLOVA",text,url:link});return}catch{}}
  if(navigator.clipboard){try{await navigator.clipboard.writeText(text+" "+link);showToast(tr("copyDone"));return}catch{}}
