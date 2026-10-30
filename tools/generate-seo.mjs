@@ -4,7 +4,7 @@ import {fileURLToPath} from "node:url";
 import vm from "node:vm";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const scope={window:{}};vm.runInNewContext(readFileSync(resolve(root,"i18n.js"),"utf8"),scope,{timeout:2000});
-const lang=scope.window.RIDDLOVA_I18N;const base="https://kitz-labs.github.io/riddlova-arena/";
+const lang=scope.window.RIDDLOVA_I18N;const base="https://riddlova.surge.sh/";
 const plain=s=>String(s||"").replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
 const esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const locales=Object.keys(lang);

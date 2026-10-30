@@ -1,5 +1,5 @@
 import {readdirSync,readFileSync} from "node:fs";
-const base="https://kitz-labs.github.io/riddlova-arena/";
+const base="https://riddlova.surge.sh/";
 const keys=readdirSync(".").filter(n=>/^[a-f0-9]{32}\.txt$/.test(n));
 if(keys.length!==1)throw new Error("Expected exactly one public IndexNow verification file");
 const name=keys[0],key=name.slice(0,-4);
@@ -8,7 +8,7 @@ const location=base+name;
 const verify=await fetch(location,{signal:AbortSignal.timeout(13000)});
 if(!verify.ok||(await verify.text()).trim()!==key)throw new Error("Verification file is not yet publicly available");
 const urlList=[base,...["de","es","fr","it","pt","tr","ru","ar","hi","ja"].map(x=>base+x+"/")];
-const payload={host:"kitz-labs.github.io",key,keyLocation:location,urlList};
+const payload={host:"riddlova.surge.sh",key,keyLocation:location,urlList};
 const res=await fetch("https://api.indexnow.org/indexnow",{method:"POST",headers:{"Content-Type":"application/json; charset=utf-8"},body:JSON.stringify(payload),signal:AbortSignal.timeout(20000)});
 if(![200,202].includes(res.status))throw new Error("IndexNow declined verification; HTTP "+res.status);
 console.log("IndexNow submitted "+urlList.length+" localized pages; HTTP "+res.status+" (acceptance is not indexing)");
