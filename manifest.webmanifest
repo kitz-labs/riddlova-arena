@@ -1,0 +1,18 @@
+{
+  "name": "RIDDLOVA · Global Brain Arena",
+  "short_name": "RIDDLOVA",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080a13",
+  "theme_color": "#080a13",
+  "description": "Daily logic, math, memory, and reflex mini games.",
+  "icons": [
+    {
+      "src": "assets/mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

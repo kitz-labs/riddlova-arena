@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090a14"><meta name="description" content="RIDDLOVA — Play global brain challenges. Logic, memory, speed and daily puzzles. Free, multilingual and ready for Telegram.">
+<title>RIDDLOVA | Play smarter. Every day.</title>
+<link rel="canonical" href="https://kitz-labs.github.io/riddlova-arena/"><link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+<meta property="og:type" content="website"><meta property="og:title" content="RIDDLOVA — Your daily brain arena">
+<meta property="og:description" content="Four fast brain games. Daily challenges. Play free. Share your score.">
+<meta property="og:image" content="https://kitz-labs.github.io/riddlova-arena/assets/social-card.png">
+<meta property="og:url" content="https://kitz-labs.github.io/riddlova-arena/">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="i18n.js" defer></script><script src="app.js" defer></script>
+</head><body>
+<div class="app-shell">
+<header class="topbar">
+<a class="brand" href="./" aria-label="RIDDLOVA home"><img src="assets/mark.svg" alt="" width="40" height="40"><span>RIDDLOVA<small>GLOBAL BRAIN ARENA</small></span></a>
+<div class="top-right"><span class="live-dot"></span><span class="global-tag" data-i18n="worldwide">WORLDWIDE</span><label class="visually-hidden" for="lang">Language</label><select id="lang" aria-label="Language"><option value="en">EN</option><option value="de">DE</option><option value="es">ES</option><option value="fr">FR</option><option value="it">IT</option><option value="pt">PT</option><option value="tr">TR</option><option value="ru">RU</option><option value="ar">AR</option><option value="hi">HI</option><option value="ja">JP</option></select></div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-top"><div class="eyebrow"><span class="l-dot"></span><span data-i18n="eyebrow">WELCOME TO THE NEW DAILY CHALLENGE</span></div><div class="datepill"><span id="date-pill"></span> · <span data-i18n="utc">UTC</span></div></div>
+<div class="hero-grid"><div><h1 data-i18n-html="headline">THE WORLD IS YOUR<br><em>BRAIN ARENA.</em></h1><p class="hero-desc" data-i18n="heroDesc">Train your mind with four ultra-fast games. New daily missions, streaks, shareable scores — zero downloads, zero excuses.</p>
+<div class="hero-cta"><button id="hero-start" class="btn btn-primary" type="button"><span data-i18n="playDaily">PLAY TODAY'S CHALLENGE</span><span aria-hidden="true">↗</span></button><button id="hero-share" class="btn btn-ghost" type="button"><span data-i18n="challengeFriend">CHALLENGE A FRIEND</span><span aria-hidden="true">↗</span></button></div>
+<div class="mini-stats"><span><b>04</b><span data-i18n="gameModes">GAME MODES</span></span><span><b id="top-streak">00</b><span data-i18n="streak">DAY STREAK</span></span><span><b id="top-best">000</b><span data-i18n="best">PERSONAL BEST</span></span></div>
+</div><div class="orbit-stage" aria-hidden="true"><div class="stage-inner"><span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="orbit orbit-c"></span><div class="core"><span>?</span></div><span class="spark sp1">✦</span><span class="spark sp2">✷</span><span class="spark sp3">✧</span><div class="floating-pill fp1"><i>◆</i> +250 XP</div><div class="floating-pill fp2">◆ LEVEL UP</div></div></div></div>
+</section>
+<section class="quick-status"><div class="qs"><span class="qs-label" data-i18n="mission">DAILY MISSION</span><strong id="mission-status">READY</strong></div><div class="qs"><span class="qs-label" data-i18n="nextReset">NEXT RESET (UTC)</span><strong id="countdown">--:--:--</strong></div><div class="qs qs-right"><span class="qs-label" data-i18n="yourXp">YOUR XP</span><strong id="total-xp">0</strong></div></section>
+<section class="section" id="games"><div class="section-heading"><div><div class="eyebrow"><span class="l-dot"></span> <span data-i18n="chooseMode">CHOOSE YOUR MODE</span></div><h2 data-i18n-html="modeHeadline">FOUR WAYS TO <em>LEVEL UP.</em></h2></div><p data-i18n="modeDesc">Each game is designed for a short, satisfying challenge. No accounts required for solo play.</p></div>
+<div class="mode-grid">
+<button type="button" class="mode-card daily-card" data-mode="daily"><span class="card-top"><span class="mode-tag">01 / DAILY</span><span class="arrow">↗</span></span><span class="mode-icon">✷</span><strong data-i18n="dailyTitle">DAILY CIRCUIT</strong><span class="mode-description" data-i18n="dailyDesc">Five fresh puzzles, one attempt. Beat yesterday.</span><span class="card-footer"><span>05 <span data-i18n="rounds">ROUNDS</span></span><span class="tag-free">FREE</span></span></button>
+<button type="button" class="mode-card" data-mode="math"><span class="card-top"><span class="mode-tag">02 / SPEED</span><span class="arrow">↗</span></span><span class="mode-icon">⌁</span><strong data-i18n="mathTitle">NUMBER RUSH</strong><span class="mode-description" data-i18n="mathDesc">Ten rapid questions. Keep your cool under time pressure.</span><span class="card-footer"><span>10 <span data-i18n="rounds">ROUNDS</span></span><span class="tag-free">FREE</span></span></button>
+<button type="button" class="mode-card" data-mode="memory"><span class="card-top"><span class="mode-tag">03 / MEMORY</span><span class="arrow">↗</span></span><span class="mode-icon">▦</span><strong data-i18n="memoryTitle">MEMORY MATRIX</strong><span class="mode-description" data-i18n="memoryDesc">Watch the pattern. Replay it in the right order.</span><span class="card-footer"><span>16 <span data-i18n="tiles">TILES</span></span><span class="tag-free">FREE</span></span></button>
+<button type="button" class="mode-card" data-mode="reflex"><span class="card-top"><span class="mode-tag">04 / REACTION</span><span class="arrow">↗</span></span><span class="mode-icon">◎</span><strong data-i18n="reflexTitle">REFLEX CORE</strong><span class="mode-description" data-i18n="reflexDesc">Wait for the signal. Tap as fast as you can.</span><span class="card-footer"><span>05 <span data-i18n="rounds">ROUNDS</span></span><span class="tag-free">FREE</span></span></button>
+</div>
+</section>
+<section id="arena" class="section arena"><div class="arena-title"><div><div class="eyebrow"><span class="l-dot"></span> <span data-i18n="profileEyebrow">YOUR ARENA PROFILE</span></div><h2 data-i18n-html="arenaHeadline">PROGRESS IS <em>PERSONAL.</em></h2></div><p data-i18n="arenaDesc">Your games and records are stored on this device until the Telegram backend is connected.</p></div><div class="profile-grid">
+<div class="profile-panel"><div class="panel-top"><span data-i18n="yourStats">YOUR STATS</span><span class="chart-icon">◈</span></div><div class="score-big" id="profile-xp">0 <span>XP</span></div><div class="progress-track"><span id="progress-fill"></span></div><div class="profile-numbers"><div><b id="profile-played">0</b><span data-i18n="played">PLAYED</span></div><div><b id="profile-streak">0</b><span data-i18n="streak">STREAK</span></div><div><b id="profile-accuracy">0%</b><span data-i18n="accuracy">ACCURACY</span></div></div></div>
+<div class="profile-panel challenge-panel"><div class="panel-top"><span data-i18n="challengeMode">CHALLENGE FRIENDS</span><span>✦</span></div><div class="challenge-icon">↗</div><h3 data-i18n="inviteTitle">GOOD BRAINS PLAY TOGETHER.</h3><p data-i18n="inviteDesc">Share today's mission and let your friends compare their results. You choose who receives the link.</p><button class="btn btn-outline" id="invite-btn"><span data-i18n="shareChallenge">SHARE CHALLENGE</span> ↗</button></div></div>
+</section>
+<section id="premium" class="section premium"><div class="premium-bg"><span class="eyebrow">RIDDLOVA+ / COMING SOON</span><h2 data-i18n-html="premiumHeadline">MORE CHALLENGES.<br><em>MORE POSSIBILITIES.</em></h2><p data-i18n="premiumDesc">Premium themed packs, exclusive design themes and events will be available with Telegram Stars only after the official bot launches.</p><button type="button" class="btn btn-soft" disabled aria-disabled="true"><span data-i18n="notYet">NOT AVAILABLE YET</span> <span>✦</span></button></div></section>
+</main>
+<footer class="footer"><div class="footer-brand"><img src="assets/mark.svg" width="25" height="25" alt=""><b>RIDDLOVA</b><span data-i18n="footText">A daily ritual for curious minds.</span></div><div class="footer-links"><a href="privacy.html" data-i18n="privacy">Privacy</a><a href="legal.html" data-i18n="legal">Legal</a><a href="mailto:support@riddlova.invalid" id="support-link" class="hide">Support</a></div><small>© 2026 RIDDLOVA</small></footer>
+</div>
+<div id="game-overlay" class="overlay" hidden><div class="game-modal" role="dialog" aria-modal="true" aria-labelledby="game-title">
+<div class="modal-top"><span class="eyebrow">RIDDLOVA / <span id="game-mode-label">DAILY</span></span><button type="button" id="close-game" aria-label="Close game" class="close-btn">✕</button></div>
+<div class="game-hud"><span class="tag" id="game-round">01 / 05</span><span class="tag" id="game-clock">00:00</span><span class="tag xp-badge">✦ <span id="game-points">0</span> XP</span></div>
+<h2 id="game-title">DAILY CIRCUIT</h2><p id="game-question"></p>
+<div id="game-content"></div><div id="game-feedback" role="status" aria-live="polite"></div>
+<div id="game-actions"><button type="button" class="btn btn-primary" id="game-next" hidden><span data-i18n="continue">CONTINUE</span> →</button></div>
+</div></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body></html>

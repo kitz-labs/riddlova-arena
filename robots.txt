@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kitz-labs.github.io/riddlova-arena/sitemap.xml
