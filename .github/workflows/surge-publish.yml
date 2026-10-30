@@ -1,0 +1,52 @@
+name: Publish RIDDLOVA on independent free CDN
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: riddlova-surge-deploy
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify 11 languages and all games before publication
+        run: |
+          node --check app.js
+          node --check i18n.js
+          node --test tests/game.test.mjs
+      - name: Prepare a sanitized static-only release
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist/assets
+          cp *.html *.js *.css *.webmanifest *.txt *.xml dist/
+          cp assets/*.png assets/*.svg dist/assets/
+          for lang in de es fr it pt tr ru ar hi ja; do
+            mkdir -p "dist/$lang"
+            cp "$lang/index.html" "dist/$lang/index.html"
+          done
+          test ! -e dist/.git
+          test ! -e dist/.github
+          test ! -e dist/tools
+          test ! -e dist/tests
+      - name: Deploy to riddlova.surge.sh over HTTPS
+        env:
+          SURGE_TOKEN: ${{ secrets.RIDDLOVA_SURGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SURGE_TOKEN" ]; then echo "Surge deploy secret missing"; exit 1; fi
+          npx --yes surge ./dist riddlova.surge.sh --force https
+      - name: Confirm live site and legal pages
+        run: |
+          set -euo pipefail
+          curl -fsSL --max-time 20 https://riddlova.surge.sh/ | grep -q 'RIDDLOVA'
+          curl -fsSL --max-time 20 https://riddlova.surge.sh/de/ | grep -q 'RIDDLOVA'
+          curl -fsSL --max-time 20 https://riddlova.surge.sh/privacy.html | grep -q 'Privacy'
