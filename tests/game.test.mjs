@@ -6,3 +6,14 @@ test("puzzles: every correct answer is in exactly four distinct options across 3
 test("math and sequences: correct answer reflects the actual displayed question",()=>{const q=prepare();for(let i=0;i<100;i++){const items=q.daily(new Date(Date.UTC(2026,0,1+i)).toISOString().slice(0,10));for(const it of items){const s=it.prompt.replace("?","").trim();if(it.type==="math"){const [a,operator,b,equals]=s.split(/\s+/);if(operator==="×")assert.equal(Number(a)*Number(b),it.answer);else{const [aa,plus,bb,mult,factor]=s.split(/\s+/);assert.equal(Number(aa)+Number(bb)*Number(factor),it.answer)}}else {const nums=s.split("·").map(x=>x.trim()).filter(Boolean).map(Number);assert.equal(nums.length,4);if(nums[1]-nums[0]===nums[2]-nums[1])assert.equal(nums[3]+(nums[1]-nums[0]),it.answer);else assert.equal(nums[3]*(nums[1]/nums[0]),it.answer)}}}});
 test("all eleven locales have a visible headline and daily play CTA",()=>{const text=fs.readFileSync(new URL("../i18n.js",import.meta.url),"utf8");const w={};vm.runInNewContext(text,{window:w});assert.equal(Object.keys(w.RIDDLOVA_I18N).length,11);for(const [lang,d] of Object.entries(w.RIDDLOVA_I18N)){assert.ok(d.headline,lang);assert.ok(d.playDaily,lang)}});
 test("static app has legal and privacy docs, no live checkout, usable asset paths",()=>{const html=fs.readFileSync(new URL("../index.html",import.meta.url),"utf8");const root=new URL("..",import.meta.url);for(const rel of ["assets/mark.svg","assets/social-card.png","app.js","i18n.js","styles.css","privacy.html","legal.html"]){assert.ok(fs.existsSync(new URL("../"+rel,import.meta.url)),rel)}assert.ok(html.includes("btn-soft")&&html.includes("disabled"));assert.ok(!html.includes("sk_live_"))});
+test("localized SEO titles preserve headline word boundaries",()=>{
+  for(const lang of ["de","es","fr","it","pt","tr","ru","ar","hi"]){
+    const html=fs.readFileSync(new URL("../"+lang+"/index.html",import.meta.url),"utf8");
+    const heading=html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+    assert.ok(heading,lang);
+    const readable=heading.replace(/<br\s*\/?>/gi," ").replace(/<[^>]*>/g,"").replace(/\s+/g," ").trim();
+    const title=html.match(/<title>([^<]+)<\/title>/)?.[1];
+    assert.equal(title,readable+" | RIDDLOVA Brain Games",lang);
+    assert.ok(html.includes('property="og:title" content="'+title+'"'),lang);
+  }
+});
