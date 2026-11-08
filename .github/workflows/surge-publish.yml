@@ -28,6 +28,7 @@ jobs:
           set -euo pipefail
           mkdir -p dist/assets
           cp *.html *.js *.css *.webmanifest *.txt *.xml dist/
+          cp robots.txt dist/
           cp assets/*.png assets/*.svg dist/assets/
           for lang in de es fr it pt tr ru ar hi ja; do
             mkdir -p "dist/$lang"
@@ -37,6 +38,7 @@ jobs:
           test ! -e dist/.github
           test ! -e dist/tools
           test ! -e dist/tests
+          grep -Fxq 'Allow: /' dist/robots.txt
       - name: Deploy to riddlova.surge.sh over HTTPS
         env:
           SURGE_TOKEN: ${{ secrets.RIDDLOVA_SURGE_TOKEN }}
@@ -50,3 +52,4 @@ jobs:
           curl -fsSL --max-time 20 https://riddlova.surge.sh/ | grep -q 'RIDDLOVA'
           curl -fsSL --max-time 20 https://riddlova.surge.sh/de/ | grep -q 'RIDDLOVA'
           curl -fsSL --max-time 20 https://riddlova.surge.sh/privacy.html | grep -q 'Privacy'
+          curl -fsSL --max-time 20 https://riddlova.surge.sh/robots.txt | grep -Fxq 'Allow: /'
