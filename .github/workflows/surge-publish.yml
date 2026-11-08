@@ -52,4 +52,7 @@ jobs:
           curl -fsSL --max-time 20 https://riddlova.surge.sh/ | grep -q 'RIDDLOVA'
           curl -fsSL --max-time 20 https://riddlova.surge.sh/de/ | grep -q 'RIDDLOVA'
           curl -fsSL --max-time 20 https://riddlova.surge.sh/privacy.html | grep -q 'Privacy'
-          curl -fsSL --max-time 20 https://riddlova.surge.sh/robots.txt | grep -Fxq 'Allow: /'
+          curl -fsSL --max-time 20 "https://riddlova.surge.sh/robots.txt?revision=${GITHUB_SHA}" | grep -Fxq 'Allow: /'
+          if curl -fsSL --max-time 20 https://riddlova.surge.sh/robots.txt | grep -Fxq 'Disallow: /'; then
+            echo "::warning::Surge wildcard-domain robots.txt blocks crawlers; use the GitHub Pages mirror for organic search until canonical URLs are migrated."
+          fi
