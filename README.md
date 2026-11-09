@@ -2,9 +2,9 @@
 
 Play short brain challenges in your browser: logic, numbers, memory and reflexes. No installation or account is required for solo play.
 
-**[▶ Play RIDDLOVA — free daily challenge](https://riddlova.surge.sh/)**
+**[▶ Play RIDDLOVA — free daily challenge](https://kitz-labs.github.io/riddlova-arena/)**
 
-[GitHub Pages mirror](https://kitz-labs.github.io/riddlova-arena/) · [Privacy](https://riddlova.surge.sh/privacy.html) · [Legal](https://riddlova.surge.sh/legal.html)
+[Surge CDN mirror](https://kitz-labs.github.io/riddlova-arena/) · [Privacy](https://kitz-labs.github.io/riddlova-arena/privacy.html) · [Legal](https://kitz-labs.github.io/riddlova-arena/legal.html)
 
 ## Four game modes
 
@@ -19,17 +19,17 @@ Personal scores and progress are saved locally in the browser. You can share a c
 
 | Language | Play |
 | --- | --- |
-| English | [Play](https://riddlova.surge.sh/) |
-| Deutsch | [Spielen](https://riddlova.surge.sh/de/) |
-| Español | [Jugar](https://riddlova.surge.sh/es/) |
-| Français | [Jouer](https://riddlova.surge.sh/fr/) |
-| Italiano | [Gioca](https://riddlova.surge.sh/it/) |
-| Português | [Jogar](https://riddlova.surge.sh/pt/) |
-| Türkçe | [Oyna](https://riddlova.surge.sh/tr/) |
-| Русский | [Играть](https://riddlova.surge.sh/ru/) |
-| العربية | [العب](https://riddlova.surge.sh/ar/) |
-| हिन्दी | [खेलें](https://riddlova.surge.sh/hi/) |
-| 日本語 | [プレイ](https://riddlova.surge.sh/ja/) |
+| English | [Play](https://kitz-labs.github.io/riddlova-arena/) |
+| Deutsch | [Spielen](https://kitz-labs.github.io/riddlova-arena/de/) |
+| Español | [Jugar](https://kitz-labs.github.io/riddlova-arena/es/) |
+| Français | [Jouer](https://kitz-labs.github.io/riddlova-arena/fr/) |
+| Italiano | [Gioca](https://kitz-labs.github.io/riddlova-arena/it/) |
+| Português | [Jogar](https://kitz-labs.github.io/riddlova-arena/pt/) |
+| Türkçe | [Oyna](https://kitz-labs.github.io/riddlova-arena/tr/) |
+| Русский | [Играть](https://kitz-labs.github.io/riddlova-arena/ru/) |
+| العربية | [العب](https://kitz-labs.github.io/riddlova-arena/ar/) |
+| हिन्दी | [खेलें](https://kitz-labs.github.io/riddlova-arena/hi/) |
+| 日本語 | [プレイ](https://kitz-labs.github.io/riddlova-arena/ja/) |
 
 ## Status and quality checks
 
