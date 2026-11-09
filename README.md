@@ -4,7 +4,7 @@ Play short brain challenges in your browser: logic, numbers, memory and reflexes
 
 **[▶ Play RIDDLOVA — free daily challenge](https://kitz-labs.github.io/riddlova-arena/)**
 
-[Surge CDN mirror](https://kitz-labs.github.io/riddlova-arena/) · [Privacy](https://kitz-labs.github.io/riddlova-arena/privacy.html) · [Legal](https://kitz-labs.github.io/riddlova-arena/legal.html)
+[Surge CDN mirror](https://riddlova.surge.sh/) · [Privacy](https://kitz-labs.github.io/riddlova-arena/privacy.html) · [Legal](https://kitz-labs.github.io/riddlova-arena/legal.html)
 
 ## Four game modes
 
